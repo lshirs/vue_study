@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h3>
+            computed:{{ftmTime}}<br>
+            filter:{{a | timeFilter}} <br>
+            filter2:{{a | timeFilter('YYYY-MM-DD')}} <br>
+            {{a | timeFilter('HH:mm:ss') | addText}}<br>
+            <span v-once>v-once:{{a |timeFilter}}</span>
+
+        </h3>
+
+    </div>
+</body>
+<script type="text/javascript">
+
+
+    Vue.filter('addText',function (val){
+        return "全局现在时间:"+val
+    })
+    new Vue({
+        el:'#app',
+        data:{
+            a: +new Date()
+        },
+        created() {
+            this.time()
+            window.localStorage.getItem()
+        },
+        methods:{
+            time(){
+                setInterval(()=>{
+                    this.a = +new Date()
+
+                },1)
+
+            }
+        },
+        filters:{
+            timeFilter(val,str="YYYY-MM-DD HH:mm:ss:SSS"){
+               return dayjs(val).format(str)
+            },
+
+        },
+        computed:{
+            ftmTime(){
+
+                return dayjs(this.a).format('YYYY-MM-DD HH:mm:ss:SSS')
+            }
+        },
+
+    })
+</script>
+</html>
+
+<style>
+
+</style>

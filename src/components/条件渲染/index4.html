@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" placeholder v-model="keywords">
+    <button @click="sortType = 2" >升排序</button>
+    <button @click="sortType = 1" >降排序</button>
+    <button @click="sortType = 0" >排序</button>
+    <ul>
+        <li v-for="item in filterPerson">
+            {{item.name}}-{{item.age}}
+        </li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            keywords:'',
+            sortType:0,
+            person:[
+
+                {name:'sssg',age:'24'},
+                {name:'abdd',age:'15'},
+                {name:'aabs',age:'32'},
+                {name:'bbss',age:'14'},
+            ]
+        },
+        created(){
+            this.person = this.filterPerson
+        },
+        methods:{},
+        computed: {
+            filterPerson(){
+                const arr = this.person.filter((p)=>{
+                    return p.name.indexOf(this.keywords)!== -1
+                })
+                if(this.sortType){
+                    arr.sort((a1,a2)=>{
+                        return this.sortType === 1 ? a2.age -a1.age : a1.age - a2.age
+                    })
+                }
+                return arr
+            }
+        }
+
+    })
+</script>
+</html>
+
+<style>
+
+</style>

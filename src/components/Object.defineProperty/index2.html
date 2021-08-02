@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    let data = {
+        name:"ss",
+        age:123,
+        a:{
+            b:1
+        }
+    }
+   const obs = new Observer(data)
+    console.log(obs)
+    let vm = {}
+    vm._data = data = obs
+
+    function Observer(obj){
+        const keys = Object.keys(obj)
+        keys.forEach((k)=>{
+            Object.defineProperty(this,k,{
+                get(){
+                    return obj[k]
+                },
+                set(val){
+                    obj[k] = val
+                }
+
+            })})
+    }
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.6/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h2 :style="{opacity}">dddddd</h2>
+    </div>
+</body>
+<script type="text/javascript">
+   const vm = new Vue({
+        el:'#app',
+        data:{
+            opacity:1
+        },
+        methods:{
+
+        },
+       beforeCreate() {
+            debugger
+           console.log("beforeCreate",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+       },
+       beforeMount() {
+           console.log("beforeMount",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+
+       },
+       beforeUpdate() {
+           console.log("beforeUpdate",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+       },
+       updated() {
+           console.log("updated",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+       },
+       beforeDestroy() {
+           console.log("beforeDestroy",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+       },
+       destroyed() {
+           console.log("destroyed",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+       },
+       mounted() {
+           console.log("mounted",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+       },
+       created(){
+           console.log("created",dayjs(+new Date()).format("YYYY-MM-DD HH:mm:ss:SSS"))
+            setTimeout(()=>{
+                this.opacity -= 0.5
+                if(this.opacity <= 0)this.opacity =1
+            },1)
+       },
+       component:{},
+       filters:{
+           timeFilter(val,str="YYYY-MM-DD HH:mm:ss:SSS"){
+               return dayjs(val).format(str)
+           },
+       }
+    })
+
+
+</script>
+</html>
+
+<style>
+
+</style>

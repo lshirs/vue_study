@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        姓: <input type="text" v-model="firstName"> <br/>
+        名: <input type="text" v-model="lateName"> <br/>
+        姓名: <input type="text" v-model="fullName"> <br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+        姓名: <span >{{fullName}}</span><br/>
+    </div>
+</body>
+<script type="text/javascript">
+   const vm =  new Vue({
+        el:'#app',
+        data:{
+            firstName: '讚',
+            lateName: '三'
+        },
+        methods:{
+            // fullName(){
+            //    return this.firstName +"="+ this.lateName
+            // }
+        },
+        component:{
+
+        },
+        computed:{
+            fullName:{
+                get(){
+                    console.log("被调用了");
+                    // this是vm
+                    return this.firstName + '-' + this.lateName
+                },
+                set(v){
+                    const arr = v.split('-')
+                    this.firstName = arr[0]
+                    this.lateName = arr[1]
+                    return v
+                }
+
+            }
+        }
+
+    })
+</script>
+</html>
+
+<style>
+
+</style>

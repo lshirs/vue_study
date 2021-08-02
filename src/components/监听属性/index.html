@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>深度监视</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="a">a++</button>
+        <br> {{number.a}}
+
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            number:{
+                a:0
+            }
+        },
+        methods:{
+            a(){
+            this.number.a++
+            }
+        },
+        watch:{
+            number:{
+                deep:true,
+                handler(n,o){
+                    console.log(n,o)
+                }
+            },
+        },
+        component:{},
+
+    })
+</script>
+</html>
+
+<style>
+
+</style>

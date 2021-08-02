@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <button @click="showInfo(222)" >{{name}}</button>
+
+    <div @mousedown="srcollLi" class="list" >
+        <ul >
+            <li>123</li>
+            <li>1231</li>
+            <li>1231</li>
+            <li>1231</li>
+            <li>1231</li>
+            <li>1231</li>
+            <li>1231</li>
+            <li>1231</li>
+            <li>1231</li>
+        </ul>
+    </div>
+
+
+</div>
+
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            name:"lsg"
+        },
+        methods:{
+            srcollLi(e){
+                console.log(e);
+                console.log(e.y);
+            },
+            ctk(){
+                console.log(222222222222)
+                alert(231231)
+            },
+            showInfo(e,t){
+                console.log(e)
+                console.log(t);
+            }
+        }
+    })
+</script>
+</html>
+<style>
+    .list{
+        height: 200px;overflow: auto
+
+    }
+   ul li{
+    background: chocolate;height: 200px;
+    }
+</style>

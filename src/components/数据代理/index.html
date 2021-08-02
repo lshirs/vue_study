@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <h2>{{name}}</h2>
+        <h2>{{address}}</h2>
+        <h2>{{study.age}}</h2>
+        <h2 v-if="study.sex">sex:{{study.sex}}</h2>
+        <button @click="addSex">vue.$set</button>
+
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    Vue.config.productionTip  = false
+const  vm = new Vue({
+    el:"#app",
+    data:{
+        name:"lsh",
+        address:"计算机",
+        study:{
+            age:1232
+        },
+
+    },
+    methods:{
+        addSex(){
+             // Vue.set(this.study,'sex','男')
+            this.$set(this.study,'sex','男')
+        }
+    }
+})
+</script>
+</html>
+

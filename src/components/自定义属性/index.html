@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-x10="n"></p> <br>
+        <input type="text" v-focus="n"> <br>
+        <button @click="n++">++</button>
+        <hr>
+        <input type="text" v-fbind="f"> <br>
+        <button @click="f++">++</button>
+    </div>
+</body>
+<script type="text/javascript">
+
+    new Vue({
+        el:'#app',
+        data:{
+            n:0,
+            f:0
+        },
+        methods:{},
+        component:{},
+        directives:{
+            x10(el,bind){
+                el.innerHTML = bind.value*10
+            },
+            focus(element,bind){
+                // console.log(element, bind);
+                element.value = bind.value
+                    element.focus()
+            },
+            fbind:{
+                 bind(el,bind){
+                     el.value = bind.value
+                     console.log('bind');
+                 },
+                inserted(el,bind){
+                     el.style.background= "pink"
+                        el.value = '请输入'
+                     el.focus()
+                    console.log('inserted');
+                },
+                update(el,bind){
+                    el.style.background= null
+                    el.value = bind.value
+                    el.focus()
+                    console.log('update');
+                }
+            }
+
+        }
+
+    })
+</script>
+</html>
+
+<style>
+
+</style>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder v-model="keywords">
+        <ul>
+            <li v-for="item in filterPerson">
+                {{item.name}}-{{item.age}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    new Vue({
+        el:'#app',
+        data:{
+            keywords:'',
+            person:[
+
+                {name:'sss',age:'123125'},
+                {name:'abdd',age:'1245'},
+                {name:'aabsss',age:'123233'},
+                {name:'bbsss',age:'3124'},
+            ]
+        },
+        created(){
+            this.person = this.filterPerson
+        },
+        methods:{},
+        computed: {
+            filterPerson(){
+                return this.person.filter((p)=>{
+                        return p.name.indexOf(this.keywords)!== -1
+                    })
+            }
+        }
+
+    })
+</script>
+</html>
+
+<style>
+
+</style>
